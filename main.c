@@ -218,11 +218,16 @@ void free_all_memory() {
 }
 
 bool show_menu_again_prompt() {
-    printf("\nWould you like to see the menu again? (y/n): ");
+    printf("\nWould you like to see the menu again? (y)(else exit system): ");
     char choice;
     scanf(" %c", &choice);
     clear_input_buffer();
-    return (choice == 'y' || choice == 'Y');
+    if(choice == 'y' || choice == 'Y') {
+        return true;
+    }
+    printf("Exiting the system");
+    free_all_memory();
+    exit(0);
 }
 
 void show_menu() {
